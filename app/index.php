@@ -14,10 +14,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 // Replace these with your MySQL database credentials
-$servername = getcwd('DB_HOST');
-$username = getcwd('DB_USER');
-$password = getcwd('DB_PASSWORD');
-$database = getcwd('DB_NAME');
+$servername = getenv('DB_HOST');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$database = getenv('DB_NAME');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
