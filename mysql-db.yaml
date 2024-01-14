@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deploy
+spec:
+  replicas: 1  # Set the number of replicas as needed
+  selector:
+    matchLabels:
+      app: mydb
+  template:
+    metadata:
+      labels:
+        app: mydb
+    spec:
+      containers:
+      - envFrom:
+        - secretRef:
+            name: db-secret
+        name: db-container
+        image: mysql:latest
+        ports:
+          - containerPort: 3306
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: mydb
+  ports:
+    - nodePort: 32560
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: NodePort
