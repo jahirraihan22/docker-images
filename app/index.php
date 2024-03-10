@@ -12,37 +12,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-
-// Replace these with your MySQL database credentials
-$servername = getenv('DB_HOST');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$database = getenv('DB_NAME');
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Retrieve and display users from the table
-$sqlSelectUsers = "SELECT * FROM users";
-$result = $conn->query($sqlSelectUsers);
-
-if ($result->num_rows > 0) {
-    echo "<ul>";
-    while ($row = $result->fetch_assoc()) {
-        echo "<li>ID: " . $row["id"] . " - Username: " . $row["username"] . " - Email: " . $row["email"] . "</li>";
-    }
-    echo "</ul>";
-} else {
-    echo "<p>No users found in the 'users' table.</p>";
-}
-
-// Close the database connection
-$conn->close();
+echo "Hi, I am from ".$_SERVER['SERVER_ADDR'];
 ?>
 
 </body>
