@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: php-apache-container
-          image: jahirraihan/php-apache2:v-php8.1
+          image: jahirraihan/app-for-loadbalance-check
           ports:
             - containerPort: 80
 
@@ -32,4 +32,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
-  type: ClusterIP
+  type: NodePort

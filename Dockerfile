@@ -8,7 +8,7 @@ COPY ./app /var/www/html
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y apache2 php libapache2-mod-php php-mysql vim
+    apt-get install -y apache2 php libapache2-mod-php
 
 EXPOSE 80
 
